@@ -1,20 +1,70 @@
 <ion-header translucent>
-  <ion-toolbar>
+  <ion-toolbar color="danger">
     <ion-title>
-      Blank
+      <h1>
+        Lista de Contactos
+      </h1>
+      
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen>
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true">
+  
+    
+    <ion-item>
+      <ion-label position="floating"> <h4>Nombre</h4> </ion-label>
+      <ion-input [(ngModel)]='clrNombre'></ion-input>
+    </ion-item>
+    
+    
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <ion-item>
+      <ion-label position="floating">Correo</ion-label>
+      <ion-input [(ngModel)]='clrCorreo'></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Teléfono</ion-label>
+      <ion-input [(ngModel)]='clrTelefono'></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Notas</ion-label>
+      <ion-input [(ngModel)]='clrNotas'></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label  position="floating"> Fecha de nacimiento: MM DD YY</ion-label>
+      <ion-datetime [(ngModel)]="date" displayFormat="DD/MMM/YYYY" placeholder="Selecciona una fecha"></ion-datetime>
+    </ion-item>
+
+    <ion-list>
+      <ion-radio-group >
+        <ion-list-header>
+          <ion-label>Sexo</ion-label>
+        </ion-list-header>
+    
+        <ion-item>
+          <ion-label>Hombre</ion-label>
+          <ion-radio slot="start" value="male"></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>Mujer</ion-label>
+          <ion-radio slot="start" value="female"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+
+    <ion-button (click)="addPersona()" expand='full'>
+      <ion-icon  name="add-circle-outline"></ion-icon>
+    </ion-button>
+
+
+    <ion-item>
+      <ion-title>Mis Contactos</ion-title>
+    </ion-item>
+    <app-show-card></app-show-card>
+
 </ion-content>

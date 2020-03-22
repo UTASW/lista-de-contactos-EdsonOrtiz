@@ -1,0 +1,46 @@
+<ion-item>
+  <ion-label>Ver notas</ion-label>
+  <ion-toggle [(ngModel)]='showNotas'></ion-toggle>
+</ion-item>
+
+
+<div *ngIf="arrPersonas.lenght !== 0" [ngClass]="mostrarDiv?'azul':'rosa'">
+<ion-card *ngFor="let item of arrPersonas">
+  <div>
+    <ion-card-header>
+      <div>
+        <ion-card-title>{{item.nombre}}</ion-card-title>
+      </div>
+      <div>
+        <ion-card-title>{{item.correo}}</ion-card-title>
+      </div>
+      <div>
+        <ion-card-title>{{item.telefono}}</ion-card-title>
+      </div>
+      <div>
+        <ion-card-title>Nacido en: {{item.fecha|date}}</ion-card-title>
+      </div>
+
+      <div>
+        <ion-fab vertical="bottom" horizontal="end" edge slot="fixed">
+          <ion-fab-button (click)="eliminar(item)" color="danger" position="right">
+            <ion-icon name="close-outline"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+      </div>
+
+      <div *ngIf="showNotas===false;else show"></div>
+      <ng-template #show>
+          <p>{{item.notas}}</p>
+        </ng-template>
+
+    </ion-card-header>
+    
+    
+  </div>  
+</ion-card>    
+</div>
+
+<div *ngIf="arrPersonas.lenght === 0">
+<h1>No se han agregado contactos</h1>
+</div>
